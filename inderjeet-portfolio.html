@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inder Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#141414;--surface:#181818;--card:#2a2a2a;--text:#fff;--muted:#a3a3a3;--red:#e50914;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141414;--text:#fff}}
+:root[data-theme="dark"]{--bg:#141414;--text:#fff}
+html{height:100%;scroll-padding-top:70px;scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:400 16px/1.5 Inter,system-ui,sans-serif;min-height:100%;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.logo{font-family:'Bebas Neue',Impact,sans-serif;color:var(--red);letter-spacing:.04em;line-height:1}
+.hide{display:none!important}
+
+/* intro */
+#intro{position:fixed;inset:0;background:#000;z-index:100;display:grid;place-items:center;overflow:hidden;cursor:pointer}
+#intro .logo{font-size:clamp(56px,15vw,190px);position:relative;z-index:2;animation:zoom 3.4s cubic-bezier(.6,0,.9,.4) forwards;text-shadow:0 0 40px #e5091466}
+#intro .bars{position:absolute;inset:0;display:flex;opacity:0;animation:bars 3.4s 1.4s forwards}
+#intro .bars i{flex:1;background:linear-gradient(#000,#e50914 30%,#7b0a10 60%,#000);transform:scaleY(0);transform-origin:bottom;animation:grow .9s 1.4s forwards}
+#intro .bars i:nth-child(2n){background:linear-gradient(#000,#2b6cff 35%,#8a1fd1 65%,#000)}
+#intro .bars i:nth-child(3n){animation-delay:1.6s}
+#intro .skip{position:absolute;bottom:24px;right:24px;color:var(--muted);font-size:14px;z-index:3}
+@keyframes zoom{0%{transform:scale(.55);opacity:0;filter:blur(8px)}20%{opacity:1;filter:blur(0)}60%{transform:scale(1)}100%{transform:scale(9);opacity:0}}
+@keyframes bars{0%{opacity:0}30%{opacity:.9}100%{opacity:0}}
+@keyframes grow{to{transform:scaleY(1)}}
+
+/* profiles */
+#profiles{position:fixed;inset:0;background:var(--bg);z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:20px;text-align:center}
+#profiles h1{font-size:clamp(28px,5vw,52px);font-weight:500}
+.plist{display:flex;gap:clamp(12px,3vw,32px);flex-wrap:wrap;justify-content:center}
+.prof{width:clamp(90px,18vw,150px);color:var(--muted)}
+.prof .av{aspect-ratio:1;border-radius:6px;display:grid;place-items:center;font-size:clamp(34px,6vw,60px);margin-bottom:10px;border:3px solid transparent;font-family:'Bebas Neue',sans-serif}
+.prof:hover,.prof:focus-visible{color:#fff}.prof:hover .av,.prof:focus-visible .av{border-color:#fff}
+.manage{border:1px solid var(--muted);padding:8px 24px;color:var(--muted);letter-spacing:.1em;margin-top:10px}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:22px;padding:calc(14px + env(safe-area-inset-top,0px)) 4% 14px;background:linear-gradient(#000c,transparent);transition:background .3s}
+nav.solid{background:var(--bg)}
+nav .logo{font-size:32px;margin-right:10px}
+nav .links{display:flex;gap:18px;font-size:14px;overflow-x:auto;scrollbar-width:none}
+nav .links a{color:#e5e5e5;text-decoration:none;white-space:nowrap}nav .links a:hover,nav .links a.on{color:#fff;font-weight:700}
+nav .right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.search{display:flex;align-items:center;border:1px solid transparent;padding:4px 8px;gap:6px}
+.search.open{border-color:#fff;background:#000a}
+.search input{background:none;border:0;color:#fff;width:0;outline:0;font:inherit;font-size:14px;transition:width .3s}
+.search.open input{width:min(200px,38vw)}
+.me{width:32px;height:32px;border-radius:4px;display:grid;place-items:center;font-family:'Bebas Neue';font-size:20px}
+
+/* hero */
+.hero{position:relative;height:min(88vh,820px);min-height:480px;display:flex;align-items:center;padding:0 4%;background:radial-gradient(ellipse at 75% 30%,#8a1020 0,transparent 55%),radial-gradient(ellipse at 90% 80%,#1d3a8a 0,transparent 50%),linear-gradient(#1b1b1b,#0d0d0d)}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(transparent,var(--bg))}
+.hero .big{position:absolute;right:5%;top:50%;transform:translateY(-50%);font:clamp(160px,32vw,460px)/.8 'Bebas Neue',sans-serif;color:#ffffff0d;user-select:none}
+.hero .txt{position:relative;z-index:2;max-width:560px;padding-top:60px}
+.tag{font-size:13px;color:var(--muted);margin-bottom:6px}.tag b{color:var(--red);font-family:'Bebas Neue';font-size:22px;letter-spacing:.05em;margin-right:6px}
+.hero h1{font:clamp(54px,9vw,112px)/.9 'Bebas Neue',sans-serif;letter-spacing:.02em;text-shadow:2px 4px 12px #000a}
+.meta{display:flex;gap:12px;align-items:center;margin:14px 0;font-weight:500;flex-wrap:wrap}
+.meta .m{color:#46d369}.meta .age{border:1px solid #fff9;padding:0 6px;font-size:13px}.meta .hd{border:1px solid #fff9;padding:0 5px;font-size:11px;border-radius:3px}
+.hero p{font-size:clamp(15px,1.7vw,19px);text-shadow:0 1px 6px #000;max-width:520px}
+.btns{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 24px;border-radius:4px;font-weight:700;font-size:17px;text-decoration:none;transition:background .2s}
+.btn.w{background:#fff;color:#000}.btn.w:hover{background:#ffffffbf}
+.btn.g{background:#6d6d6eb3;color:#fff}.btn.g:hover{background:#6d6d6e66}
+
+/* rows */
+main{position:relative;z-index:3;margin-top:-90px;padding-bottom:30px}
+.row{margin:0 0 3vw;position:relative}
+.row h2{font-size:clamp(17px,1.8vw,22px);font-weight:700;padding:0 4%;margin-bottom:8px}
+.track{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;padding:44px 4% 60px;margin:-44px 0 -60px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.arr{position:absolute;top:32px;bottom:0;width:4%;z-index:5;background:#000a;font-size:34px;opacity:0;transition:opacity .2s;display:grid;place-items:center}
+.row:hover .arr{opacity:1}.arr.l{left:0}.arr.r{right:0}
+.card{flex:0 0 clamp(210px,21vw,300px);aspect-ratio:16/9;border-radius:5px;position:relative;scroll-snap-align:start;text-align:left;overflow:hidden;transition:transform .25s .1s,box-shadow .25s .1s;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+.card.tall{aspect-ratio:2/3;flex-basis:clamp(150px,15vw,210px)}
+.card .n{position:absolute;top:8px;left:12px;font:700 11px Inter;color:var(--red);letter-spacing:.1em}
+.card .t{font:clamp(24px,2.5vw,34px)/.95 'Bebas Neue',sans-serif;letter-spacing:.02em;text-shadow:0 2px 8px #0008}
+.card .s{font-size:12px;color:#ffffffcc;margin-top:4px}
+.card .stat{position:absolute;top:10px;right:14px;font:clamp(30px,3.4vw,48px)/1 'Bebas Neue';color:#ffffffd9}
+.card:hover,.card:focus-visible{transform:scale(1.18);z-index:6;box-shadow:0 14px 34px #000d}
+.card.tall:hover{transform:scale(1.1)}
+.track .card:first-child:hover{transform-origin:left center}
+.mini{display:flex;gap:6px;margin-top:6px}
+.ic{width:28px;height:28px;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;font-size:13px;background:#000a}
+.ic:hover{border-color:#fff}
+
+/* grid (search / list) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding:110px 4% 40px}
+.grid .card{flex:none;width:100%}
+.empty{padding:140px 4%;color:var(--muted);text-align:center}
+
+/* modal */
+#modal{position:fixed;inset:0;background:#000b;z-index:80;display:flex;justify-content:center;align-items:flex-start;overflow-y:auto;padding:4vh 12px}
+#modal .box{background:var(--surface);width:min(880px,100%);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px #000;animation:pop .25s}
+@keyframes pop{from{transform:scale(.92);opacity:0}}
+.mh{height:min(46vw,380px);min-height:220px;position:relative;display:flex;align-items:flex-end;padding:28px 36px}
+.mh::after{content:"";position:absolute;inset:auto 0 0;height:50%;background:linear-gradient(transparent,var(--surface))}
+.mh h3{font:clamp(40px,7vw,76px)/.9 'Bebas Neue';position:relative;z-index:2}
+.x{position:absolute;top:14px;right:14px;z-index:5;width:36px;height:36px;border-radius:50%;background:var(--surface);font-size:20px}
+.mb{padding:8px 36px 36px;display:grid;grid-template-columns:2fr 1fr;gap:28px}
+.mb .meta{margin-top:0}
+.mb ul{padding-left:18px;margin-top:10px}.mb li{margin-bottom:10px}
+.side{font-size:14px;color:var(--muted)}.side b{color:#fff;font-weight:500}.side div{margin-bottom:12px}
+@media(max-width:700px){.mb{grid-template-columns:1fr;padding:8px 20px 28px}.mh{padding:20px}nav .links{display:none}nav .links.show{display:flex}.hero .big{display:none}.menu{display:inline!important}}
+.menu{display:none;font-size:14px}
+
+footer{padding:40px 4% 60px;color:var(--muted);font-size:13px;max-width:900px;margin:0 auto}
+footer .soc{display:flex;gap:22px;margin-bottom:16px;flex-wrap:wrap}footer a{color:var(--muted)}footer a:hover{color:#fff}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#fff;color:#000;padding:10px 20px;border-radius:4px;z-index:120;font-weight:500;transition:opacity .3s;opacity:0;pointer-events:none}
+#toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="intro" role="button" aria-label="Skip intro" tabindex="0">
+  <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="logo">INDERJEET</div>
+  <span class="skip">Skip intro ▸</span>
+</div>
+
+<div id="profiles" class="hide">
+  <h1>Who’s watching?</h1>
+  <div class="plist" id="plist"></div>
+  <button class="manage" id="manage">MANAGE PROFILES</button>
+</div>
+
+<div id="app" class="hide">
+<nav id="nav">
+  <span class="logo">INDERJEET</span>
+  <button class="menu" id="menu">Browse ▾</button>
+  <div class="links" id="links">
+    <a href="#top" class="on">Home</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#certs">Certifications</a><a href="#education">Education</a><a href="#mylist">My List</a><a href="#contact">Contact</a>
+  </div>
+  <div class="right">
+    <div class="search" id="search"><button id="sbtn" aria-label="Search">🔍</button><input id="sin" placeholder="Titles, skills, companies" aria-label="Search portfolio"></div>
+    <div class="me" id="me"></div>
+  </div>
+</nav>
+
+<div id="home">
+<header class="hero" id="top">
+  <div class="big" aria-hidden="true">IS</div>
+  <div class="txt">
+    <div class="tag"><b>P</b>PORTFOLIO ORIGINAL</div>
+    <h1>Inderjeet Singh</h1>
+    <div class="meta"><span class="m">98% Match</span><span class="age">B.Tech CSE</span><span>2026</span><span class="hd">HD</span><span>Full-Stack · Edge AI</span></div>
+    <p>Results-driven Computer Engineering student who bridges hardware and software. Ex-Analyst at Birlasoft, building Spring Boot APIs, React apps and real-time ML models.</p>
+    <div class="btns">
+      <a class="btn w" href="#experience">▶ Play Resume</a>
+      <button class="btn g" id="heroInfo">ⓘ More Info</button>
+    </div>
+  </div>
+</header>
+<main id="rows"></main>
+</div>
+
+<div id="results" class="hide"></div>
+
+<footer id="contact">
+  <div class="soc">
+    <a href="https://www.linkedin.com/in/inderjeet-singh-7a3b9322b" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/akberhusain" target="_blank" rel="noopener">GitHub</a>
+    <a href="mailto:inderjeet.singh200123@gmail.com">Email</a>
+    <a href="tel:+917319941639">+91 7319941639</a>
+  </div>
+  <p>Inderjeet Singh · Computer Engineering · Open to full-stack and AI roles.</p>
+  <p style="margin-top:8px">This portfolio is a Netflix-inspired design. It isn’t affiliated with Netflix.</p>
+</footer>
+</div>
+
+<div id="modal" class="hide" role="dialog" aria-modal="true"></div>
+<div id="toast"></div>
+
+<script>
+const G=(a,b)=>`linear-gradient(135deg,${a},${b})`;
+const D=[
+{id:'e1',row:'experience',t:'Payments API',s:'Analyst · Birlasoft',stat:'10K+',g:G('#b20710','#2b0408'),
+ meta:['Aug 2022 – Aug 2023','Coimbatore, India','Spring Boot'],
+ d:'Architected and deployed backend APIs using Spring Boot handling 10,000+ daily transactions with 99.9% uptime, serving critical payment processing workflows.',
+ tags:['Spring Boot','REST APIs','Payments'],kind:'Experience'},
+{id:'e2',row:'experience',t:'S3 Pipeline',s:'Analyst · Birlasoft',stat:'5K+',g:G('#e87722','#401a05'),
+ meta:['Aug 2022 – Aug 2023','Coimbatore, India','AWS S3'],
+ d:'Built an AWS S3-based file storage and processing pipeline, reducing file processing time by 15% and supporting 5,000+ daily uploads.',
+ tags:['AWS','S3','File Processing'],kind:'Experience'},
+{id:'e3',row:'experience',t:'Test Suite',s:'Analyst · Birlasoft',stat:'92%',g:G('#0f7b6c','#04201c'),
+ meta:['Aug 2022 – Aug 2023','Coimbatore, India','JUnit · Mockito'],
+ d:'Wrote comprehensive unit and integration tests using JUnit and Mockito, achieving 92% code coverage and reducing production bugs by 40%.',
+ tags:['JUnit','Mockito','Testing'],kind:'Experience'},
+{id:'e4',row:'experience',t:'API Docs',s:'Analyst · Birlasoft',stat:'20+',g:G('#6b3fd1','#1a0b3d'),
+ meta:['Aug 2022 – Aug 2023','Coimbatore, India','Swagger'],
+ d:'Documented 20+ RESTful API endpoints using Swagger/OpenAPI, improving developer onboarding efficiency and cross-team collaboration.',
+ tags:['Swagger','OpenAPI','Documentation'],kind:'Experience'},
+{id:'p1',row:'projects',t:'MediCompare',s:'Healthcare Price Transparency',stat:'40%',tall:1,g:G('#0a6cff','#021433'),
+ meta:['Aug 2025 – Nov 2025','Spring Boot · React.js','Up to 40% cost savings'],
+ d:'Web platform that lets users compare medical service prices across hospitals in real time, helping reduce healthcare costs by up to 40%.',
+ pts:['Built a healthcare aggregator enabling price comparison across 50+ hospitals, serving 2,000+ users and processing 500+ appointments with an integrated payment gateway.','Implemented geolocation-based search with Google Maps API handling 10,000+ service queries with sub-200ms response time and a 45% increase in user engagement.'],
+ tags:['Spring Boot','React.js','MySQL','Google Maps API','Razorpay','GCP','DBMS'],link:'https://github.com/akberhusain/medicompare',kind:'Project'},
+{id:'p2',row:'projects',t:'CareerPath AI',s:'Career Development Assistant',stat:'4.8★',tall:1,g:G('#c2185b','#2a0414'),
+ meta:['Mar 2026 – Jun 2026','Python · Flask · React.js','4.8/5 satisfaction'],
+ d:'AI platform that analyzes resumes using NLP to identify skill gaps and generates personalized week-by-week learning roadmaps for students and professionals.',
+ pts:['Engineered an AI career navigation platform serving 1,000+ users with a 4.8/5 satisfaction rating.','Built an intelligent recommendation system with collaborative filtering and a “Job Readiness Score” analyzing 20+ parameters, tracking 10,000+ job postings for in-demand skills.'],
+ tags:['Python','Flask','React.js','NLP','TensorFlow','PostgreSQL','AWS','OpenAI API'],link:'https://github.com/akberhusain/careerpath-ai',kind:'Project'},
+{id:'s1',row:'skills',t:'Languages',s:'5 skills',g:G('#f5a623','#3d2705'),tags:['Java','Python','JavaScript','HTML5','CSS3'],d:'The languages I write day to day.',kind:'Skill'},
+{id:'s2',row:'skills',t:'Backend',s:'6 skills',g:G('#2e8b57','#06210f'),tags:['Spring Boot','Spring Security','Hibernate','JPA','Flask','RESTful APIs'],d:'Server-side frameworks and API design.',kind:'Skill'},
+{id:'s3',row:'skills',t:'Frontend',s:'4 skills',g:G('#00a8e8','#032a3d'),tags:['React.js','Redux','Bootstrap','Tailwind CSS'],d:'Component-driven, responsive interfaces.',kind:'Skill'},
+{id:'s4',row:'skills',t:'Database',s:'4 skills',g:G('#d1357d','#3d0720'),tags:['MySQL','DBMS','RDBMS','MongoDB'],d:'Relational and document data modelling.',kind:'Skill'},
+{id:'s5',row:'skills',t:'Cloud & DevOps',s:'6 skills',g:G('#4a5de0','#0d1240'),tags:['Google Cloud Platform (GCP)','Docker','Jenkins','Git','GitHub','AWS'],d:'Shipping, containerising and running apps in the cloud.',kind:'Skill'},
+{id:'s6',row:'skills',t:'Tools',s:'4 skills',g:G('#7a7a7a','#1c1c1c'),tags:['Jira','ServiceNow','Virtual Machines (VM)','Generative AI Tools'],d:'Day-to-day tooling for delivery and support.',kind:'Skill'},
+{id:'s7',row:'skills',t:'Soft Skills',s:'4 skills',g:G('#c0392b','#310d09'),tags:['Problem Solving','Analytical','Strong Communication','Data Structures & Algorithms'],d:'How I work with people and problems.',kind:'Skill'},
+{id:'c1',row:'certs',t:'Google Associate Cloud Engineer',s:'Certification',tall:1,g:G('#1a73e8','#08224a'),d:'Cloud fundamentals on Google Cloud Platform: deploying, monitoring and managing GCP solutions.',tags:['GCP','Cloud'],kind:'Certification'},
+{id:'c2',row:'certs',t:'ITIL Foundation',s:'IT Service Management',tall:1,g:G('#8e24aa','#25092d'),d:'ITIL Foundation certification covering IT service management practices.',tags:['ITIL','ITSM'],kind:'Certification'},
+{id:'c3',row:'certs',t:'Salesforce Certified Associate',s:'Certification',tall:1,g:G('#00a1e0','#032e40'),d:'Salesforce Certified Associate: core CRM platform knowledge.',tags:['Salesforce','CRM'],kind:'Certification'},
+{id:'c4',row:'certs',t:'Cisco GET Connect',s:'Networking Basics and More',tall:1,g:G('#049fd9','#04202b'),d:'Cisco GET Connect program covering networking basics and more.',tags:['Cisco','Networking'],kind:'Certification'},
+{id:'d1',row:'education',t:'B.Tech Computer Science',s:'ITER, Bhubaneswar',stat:'7.88',g:G('#c0392b','#2e0b07'),meta:['2023 – 2026','CGPA 7.88 / 10'],d:'Bachelor of Technology in Computer Science at the Institute of Technical Education and Research, Bhubaneswar.',tags:['Computer Science'],kind:'Education'},
+{id:'d2',row:'education',t:'Diploma in Computer Science',s:'NTTF',stat:'7.81',g:G('#16a085','#05261f'),meta:['CGPA 7.81 / 10'],d:'Diploma in Computer Science from the Nettur Technical Training Foundation (NTTF).',tags:['Computer Science'],kind:'Education'},
+{id:'d3',row:'education',t:'10th ICSE',s:'Tagore Academy, Jamshedpur',stat:'76%',g:G('#f39c12','#3b2503'),meta:['Percentage 76%'],d:'ICSE Class 10 at Tagore Academy, Jamshedpur.',tags:['ICSE'],kind:'Education'},
+{id:'k1',row:'contact',t:'LinkedIn',s:'Let’s connect',g:G('#0a66c2','#04213d'),d:'Message me on LinkedIn.',link:'https://www.linkedin.com/in/inderjeet-singh-7a3b9322b',linkLabel:'Open LinkedIn',tags:['LinkedIn'],kind:'Contact'},
+{id:'k2',row:'contact',t:'Email',s:'inderjeet.singh200123@gmail.com',g:G('#ea4335','#3a0f0b'),d:'Write to me at inderjeet.singh200123@gmail.com.',link:'mailto:inderjeet.singh200123@gmail.com',linkLabel:'Send email',tags:['Email'],kind:'Contact'},
+{id:'k3',row:'contact',t:'Phone',s:'+91 7319941639',g:G('#2ecc71','#072b16'),d:'Call or message me on +91 7319941639.',link:'tel:+917319941639',linkLabel:'Call now',tags:['Phone'],kind:'Contact'},
+{id:'k4',row:'contact',t:'GitHub',s:'akberhusain',g:G('#444','#0e0e0e'),d:'Source code for MediCompare and CareerPath AI.',link:'https://github.com/akberhusain',linkLabel:'Open GitHub',tags:['GitHub'],kind:'Contact'}
+];
+const ROWS=[['experience','Experience · Analyst at Birlasoft'],['projects','Projects: Trending Now'],['skills','Skills: Top Picks for You'],['certs','Certifications & Achievements'],['education','Education'],['contact','Get in Touch']];
+const PROF=[['Recruiter','R','#e50914'],['Developer','D','#0a6cff'],['Stalker','S','#f5a623'],['Adventurer','A','#2ecc71']];
+const $=s=>document.querySelector(s);
+let list=[],profile=PROF[0];
+
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.x);toast.x=setTimeout(()=>t.classList.remove('on'),2000)}
+function cardHTML(d){
+  const inList=list.includes(d.id);
+  return `<div class="card${d.tall?' tall':''}" tabindex="0" role="button" data-id="${d.id}" style="background:${d.g}" aria-label="${d.t}">
+  ${d.stat?`<span class="stat">${d.stat}</span>`:''}<span class="n">${d.kind.toUpperCase()}</span>
+  <div class="t">${d.t}</div><div class="s">${d.s}</div>
+  <div class="mini"><span class="ic" data-act="open" title="More info">▾</span><span class="ic" data-act="list" title="My List">${inList?'✓':'+'}</span></div></div>`;
+}
+function rowHTML(id,title,items){
+  return `<section class="row" id="${id}"><h2>${title}</h2><button class="arr l" aria-label="Scroll left">‹</button><div class="track">${items.map(cardHTML).join('')}</div><button class="arr r" aria-label="Scroll right">›</button></section>`;
+}
+function render(){
+  let h=ROWS.map(([id,t])=>rowHTML(id,t,D.filter(d=>d.row===id))).join('');
+  const l=D.filter(d=>list.includes(d.id));
+  h=h.replace('<section class="row" id="education"',(l.length?rowHTML('mylist','My List',l):`<section class="row" id="mylist"><h2>My List</h2><p style="padding:0 4%;color:var(--muted)">Tap + on any title to save it here.</p></section>`)+'<section class="row" id="education"');
+  $('#rows').innerHTML=h;
+}
+function enter(p){
+  profile=p;$('#profiles').classList.add('hide');$('#app').classList.remove('hide');
+  const m=$('#me');m.textContent=p[1];m.style.background=p[2];m.title=p[0];
+  render();window.scrollTo(0,0);
+}
+function showProfiles(){
+  $('#app').classList.add('hide');$('#profiles').classList.remove('hide');
+  $('#plist').innerHTML=PROF.map((p,i)=>`<button class="prof" data-i="${i}"><div class="av" style="background:${p[2]}">${p[1]}</div>${p[0]}</button>`).join('');
+}
+function endIntro(){
+  const i=$('#intro');if(i.classList.contains('hide'))return;
+  i.classList.add('hide');showProfiles();
+}
+function openModal(id){
+  const d=D.find(x=>x.id===id);if(!d)return;
+  const m=$('#modal'),inList=list.includes(id);
+  m.innerHTML=`<div class="box"><div class="mh" style="background:${d.g}"><button class="x" aria-label="Close">✕</button><h3>${d.t}</h3></div>
+  <div class="mb"><div>
+   <div class="btns" style="margin:0 0 16px">
+    ${d.link?`<a class="btn w" href="${d.link}" target="_blank" rel="noopener">▶ ${d.linkLabel||'View on GitHub'}</a>`:`<a class="btn w" href="#contact" data-close>▶ Contact me</a>`}
+    <button class="ic" style="width:42px;height:42px;font-size:20px" data-act="list" data-id="${id}" title="My List">${inList?'✓':'+'}</button></div>
+   <div class="meta"><span class="m">98% Match</span>${(d.meta||[d.kind]).map(x=>`<span>${x}</span>`).join('')}</div>
+   <p>${d.d}</p>${d.pts?`<ul>${d.pts.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}</div>
+  <div class="side"><div><b>Type:</b> ${d.kind}</div><div><b>Tags:</b> ${d.tags.join(', ')}</div><div><b>Subtitle:</b> ${d.s}</div></div></div></div>`;
+  m.classList.remove('hide');document.body.style.overflow='hidden';m.scrollTop=0;
+  m.querySelector('.x').focus();
+}
+function closeModal(){$('#modal').classList.add('hide');document.body.style.overflow=''}
+function toggleList(id){
+  const i=list.indexOf(id);
+  if(i<0){list.push(id);toast('Added to My List')}else{list.splice(i,1);toast('Removed from My List')}
+  render();if(!$('#results').classList.contains('hide'))doSearch($('#sin').value);
+}
+function doSearch(q){
+  q=q.trim().toLowerCase();const r=$('#results'),h=$('#home');
+  if(!q){r.classList.add('hide');h.classList.remove('hide');return}
+  const hits=D.filter(d=>(d.t+d.s+d.d+d.kind+d.tags.join(' ')).toLowerCase().includes(q));
+  h.classList.add('hide');r.classList.remove('hide');
+  r.innerHTML=hits.length?`<div class="grid">${hits.map(cardHTML).join('')}</div>`:`<div class="empty">Your search for “${q.replace(/</g,'')}” did not have any matches.<br>Try Java, React, AWS, Spring Boot or MediCompare.</div>`;
+}
+
+/* events */
+$('#intro').addEventListener('click',endIntro);
+$('#intro').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')endIntro()});
+setTimeout(endIntro,3800);
+$('#plist').addEventListener('click',e=>{const b=e.target.closest('.prof');if(b)enter(PROF[b.dataset.i])});
+$('#manage').onclick=()=>toast('Pick a profile to continue');
+$('#me').onclick=showProfiles;
+$('#heroInfo').onclick=()=>openModal('p1');
+$('#menu').onclick=()=>$('#links').classList.toggle('show');
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-act]');
+  if(a){e.preventDefault();e.stopPropagation();const id=a.dataset.id||a.closest('.card').dataset.id;a.dataset.act==='list'?toggleList(id):openModal(id);return}
+  const c=e.target.closest('.card');if(c){openModal(c.dataset.id);return}
+  const ar=e.target.closest('.arr');
+  if(ar){const t=ar.parentElement.querySelector('.track');t.scrollBy({left:(ar.classList.contains('r')?1:-1)*t.clientWidth*.8,behavior:'smooth'});return}
+  if(e.target.id==='modal'||e.target.closest('.x')||e.target.closest('[data-close]'))closeModal();
+  const nl=e.target.closest('#links a');
+  if(nl){$('#links').classList.remove('show');if(!$('#results').classList.contains('hide')){$('#sin').value='';doSearch('')}}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();$('#search').classList.remove('open')}
+  if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('card')){e.preventDefault();openModal(e.target.dataset.id)}
+});
+$('#sbtn').onclick=()=>{const s=$('#search');s.classList.toggle('open');if(s.classList.contains('open'))$('#sin').focus();else{$('#sin').value='';doSearch('')}};
+$('#sin').addEventListener('input',e=>doSearch(e.target.value));
+$('#sin').addEventListener('blur',e=>{if(!e.target.value)$('#search').classList.remove('open')});
+addEventListener('scroll',()=>{
+  $('#nav').classList.toggle('solid',scrollY>40);
+  const ids=['top','experience','projects','skills','certs','education','mylist','contact'];let cur='top';
+  ids.forEach(i=>{const el=document.getElementById(i);if(el&&el.getBoundingClientRect().top<140)cur=i});
+  document.querySelectorAll('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+</script>
+</body>
+</html>
